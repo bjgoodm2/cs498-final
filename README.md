@@ -1,4 +1,6 @@
-# Starter files for MP3
+# CS 498 Final Project -- Carpool
+
+I guess MP3 is a good skeleton to start with.
 
 ## Setup
 Use the following commands in your vagrant development environment to get this up and running
