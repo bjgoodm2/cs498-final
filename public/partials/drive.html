@@ -1,3 +1,4 @@
+<!-- Nav bar -->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -7,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Carpool@UIUC</a>
+      <a class="navbar-brand" href="#/home">Carpool@UIUC</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -28,3 +29,49 @@
     </div>
   </div>
 </nav>
+
+<div class="container">
+  <div><p class="lead">I want to vonlunteer to drive!</p></div>
+</div>
+
+<!-- Submit forms -->
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="originInput">Origin</label>
+          <input type="text" class="form-control" id="originInput" placeholder="Origin">
+        </div>
+        <div class="form-group">
+          <label for="destInput">Destination</label>
+          <input type="text" class="form-control" id="destInput" placeholder="Destination">
+        </div>
+      </div>
+      <div class="col-md-6">
+
+        <label for="startDateInput">Date of departure:</label><br>
+        <div class="form-group">
+          <!-- For screen readers -->
+          <label class="sr-only" for="startDateInput">Date of departure</label>
+          <input type="date" class="form-control" id="startDateInput" placeholder="Start date">
+        </div>
+        
+        <label for="startDateInput">Time:</label><br>
+        <div class="form-group">
+          <label class="sr-only" for="startDateInput">Time</label>
+          <input type="time" class="form-control" id="timeInput">
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg center-block">Submit</button>
+  </form>
+  <br>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="..." class="img-rounded profile-thumb" height="100px">
+      <p>Sunday, April 24, 5pm</p>
+      <p>User is driving from Champaign to Chicago</p>
+    </div>
+  </div>
+</div>
