@@ -1,0 +1,16 @@
+/* line 2, ../../source_sass/_base.scss */
+body {
+  padding-top: 70px; }
+
+/* line 4, ../../source_sass/_base.scss */
+.profile-thumb {
+  float: left; }
+
+/* line 6, ../../source_sass/_base.scss */
+.profile-photo {
+  display: block; }
+
+/*
+  NOTE: Do not touch this file. Write the bulk of your custom styles
+  in _base.scss
+*/
