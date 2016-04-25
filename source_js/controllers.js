@@ -1,6 +1,3 @@
-/**
- * Created by Alec on 4/25/2016.
- */
 app.controller('homeController', ['$scope', '$http', function($scope, $http) {
     
 }]);
