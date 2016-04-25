@@ -1,4 +1,4 @@
-var app = angular.module('carpool',['ngRoute']);
+var app = angular.module('carpool',['ngRoute', 'ui.bootstrap']);
 
 app.config(function ($routeProvider) {
     $routeProvider

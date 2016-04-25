@@ -1,5 +1,5 @@
 app.controller('homeController', ['$scope', '$http', function($scope, $http) {
-
+    $scope.test = "hi"
 }]);
 
 app.controller('findController', ['$scope', '$http', function($scope, $http) {

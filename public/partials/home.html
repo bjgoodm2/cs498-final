@@ -1,39 +1,218 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#/home">Carpool@UIUC</a>
+<div ng-controller="homeController">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/home">Carpool@UIUC</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#/home">Home</a></li>
+          <li><a href="#/find">Find</a></li>
+          <li><a href="#/drive">Drive</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="" data-toggle="modal" data-target="#loginModal">Login</a>
+          </li>
+          <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log in<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Login</a></li>
+              <li><a href="#">Signup</a></li>
+              <li><a href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#/home">Home</a></li>
-        <li><a href="#/find">Find</a></li>
-        <li><a href="#/drive">Drive</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log in<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Signup</a></li>
-            <li><a href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!--/.nav-collapse -->
+  </nav>
+
+  <div class="container">
+
+    <div>
+      <h1>Explanation of project</h1>
+      <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+      {{test}}
+    </div>
+
+  </div><!-- /.container -->
+
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Login</h4>
+        </div>
+        <div class="modal-body">
+          <!--<div class="form-group">
+            <label for="emailInput">Email address</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="nameInput">Name</label>
+            <input type="text" class="form-control" id="nameInput" placeholder="Name">
+          </div>-->
+          <uib-tabset active="activeForm">
+            <uib-tab index="0" heading="Form Tab">
+              <ng-form name="nestedForm">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" required ng-model="model.name"/>
+                </div>
+              </ng-form>
+            </uib-tab>
+            <uib-tab index="1" heading="Tab One">
+              Some Tab Content
+            </uib-tab>
+            <uib-tab index="2" heading="Tab Two">
+              More Tab Content
+            </uib-tab>
+          </uib-tabset>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Register</button>
+          <button type="button" class="btn btn-primary">Sign in</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+
+
+<!--
+ Modal
+<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <br>
+      <div class="bs-example bs-example-tabs">
+        <ul id="myTab" class="nav nav-tabs">
+          <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
+          <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
+          <li class=""><a href="#why" data-toggle="tab">Why?</a></li>
+        </ul>
+      </div>
+      <div class="modal-body">
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade in" id="why">
+            <p>We need this information so that you can receive access to the site and its content. Rest assured your information will not be sold, traded, or given to anyone.</p>
+            <p></p><br> Please contact <a mailto:href="JoeSixPack@Sixpacksrus.com"></a>JoeSixPack@Sixpacksrus.com</a> for any other inquiries.</p>
+          </div>
+          <div class="tab-pane fade active in" id="signin">
+            <form class="form-horizontal">
+              <fieldset>
+                &lt;!&ndash; Sign In Form &ndash;&gt;
+                &lt;!&ndash; Text input&ndash;&gt;
+                <div class="control-group">
+                  <label class="control-label" for="userid">Alias:</label>
+                  <div class="controls">
+                    <input required="" id="userid" name="userid" type="text" class="form-control" placeholder="JoeSixpack" class="input-medium" required="">
+                  </div>
+                </div>
+
+                &lt;!&ndash; Password input&ndash;&gt;
+                <div class="control-group">
+                  <label class="control-label" for="passwordinput">Password:</label>
+                  <div class="controls">
+                    <input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">
+                  </div>
+                </div>
+
+                &lt;!&ndash; Multiple Checkboxes (inline) &ndash;&gt;
+                <div class="control-group">
+                  <label class="control-label" for="rememberme"></label>
+                  <div class="controls">
+                    <label class="checkbox inline" for="rememberme-0">
+                      <input type="checkbox" name="rememberme" id="rememberme-0" value="Remember me">
+                      Remember me
+                    </label>
+                  </div>
+                </div>
+
+                &lt;!&ndash; Button &ndash;&gt;
+                <div class="control-group">
+                  <label class="control-label" for="signin"></label>
+                  <div class="controls">
+                    <button id="signin" name="signin" class="btn btn-success">Sign In</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div class="tab-pane fade" id="signup">
+            <form class="form-horizontal">
+              <fieldset>
+                &lt;!&ndash; Sign Up Form &ndash;&gt;
+                &lt;!&ndash; Text input&ndash;&gt;
+                <div class="control-group">
+                  <label class="control-label" for="Email">Email:</label>
+                  <div class="controls">
+                    <input id="Email" name="Email" class="form-control" type="text" placeholder="JoeSixpack@sixpacksrus.com" class="input-large" required="">
+                  </div>
+                </div>
+
+                &lt;!&ndash; Text input&ndash;&gt;
+                <div class="control-group">
+                  <label class="control-label" for="userid">Alias:</label>
+                  <div class="controls">
+                    <input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">
+                  </div>
+                </div>
+
+                &lt;!&ndash; Password input&ndash;&gt;
+                <div class="control-group">
+                  <label class="control-label" for="password">Password:</label>
+                  <div class="controls">
+                    <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">
+                    <em>1-8 Characters</em>
+                  </div>
+                </div>
+
+                &lt;!&ndash; Text input&ndash;&gt;
+                <div class="control-group">
+                  <label class="control-label" for="reenterpassword">Re-Enter Password:</label>
+                  <div class="controls">
+                    <input id="reenterpassword" class="form-control" name="reenterpassword" type="password" placeholder="********" class="input-large" required="">
+                  </div>
+                </div>
+
+                &lt;!&ndash; Multiple Radios (inline) &ndash;&gt;
+                <br>
+                <div class="control-group">
+                  <label class="control-label" for="humancheck">Humanity Check:</label>
+                  <div class="controls">
+                    <label class="radio inline" for="humancheck-0">
+                      <input type="radio" name="humancheck" id="humancheck-0" value="robot" checked="checked">I'm a Robot</label>
+                    <label class="radio inline" for="humancheck-1">
+                      <input type="radio" name="humancheck" id="humancheck-1" value="human">I'm Human</label>
+                  </div>
+                </div>
+
+                &lt;!&ndash; Button &ndash;&gt;
+                <div class="control-group">
+                  <label class="control-label" for="confirmsignup"></label>
+                  <div class="controls">
+                    <button id="confirmsignup" name="confirmsignup" class="btn btn-success">Sign Up</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <center>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </center>
+      </div>
+    </div>
   </div>
-</nav>
-
-<div class="container">
-
-  <div>
-    <h1>Explanation of project</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-  </div>
-
-</div><!-- /.container -->
+</div>-->
