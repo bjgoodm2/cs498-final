@@ -50,28 +50,38 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-          <!--<div class="form-group">
-            <label for="emailInput">Email address</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="nameInput">Name</label>
-            <input type="text" class="form-control" id="nameInput" placeholder="Name">
-          </div>-->
           <uib-tabset active="activeForm">
-            <uib-tab index="0" heading="Form Tab">
-              <ng-form name="nestedForm">
+            <uib-tab index="0" heading="Login">
+              <ng-form name="nestedLoginForm">
                 <div class="form-group">
-                  <label>Name</label>
-                  <input type="text" class="form-control" required ng-model="model.name"/>
+                  <label for="loginEmailInput">Email address</label>
+                  <input type="email" class="form-control" id="loginEmailInput" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label for="loginPassInput">Password</label>
+                  <input type="password" class="form-control" id="loginPassInput" placeholder="Password">
                 </div>
               </ng-form>
             </uib-tab>
-            <uib-tab index="1" heading="Tab One">
-              Some Tab Content
-            </uib-tab>
-            <uib-tab index="2" heading="Tab Two">
-              More Tab Content
+            <uib-tab index="1" heading="Signup">
+              <ng-form name="nestedSignupForm">
+                <div class="form-group">
+                  <label for="signupEmailInput">Email address</label>
+                  <input type="email" class="form-control" id="signupEmailInput" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label for="signupNameInput">Name</label>
+                  <input type="text" class="form-control" id="signupNameInput" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <label for="signupPassInput1">Password</label>
+                  <input type="password" class="form-control" id="signupPassInput1" placeholder="Password">
+                </div>
+                <div class="form-group">
+                  <label for="signupPassInput2">Re-enter Password</label>
+                  <input type="password" class="form-control" id="signupPassInput2" placeholder="Password">
+                </div>
+              </ng-form>
             </uib-tab>
           </uib-tabset>
         </div>
