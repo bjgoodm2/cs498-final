@@ -14,7 +14,7 @@ app.config(function ($routeProvider) {
             templateUrl : './partials/drive.html',
             controller : 'driveController'
         })
-        .when('/profile/:uid', {
+        .when('/profile', {
             templateUrl : './partials/profile.html',
             controller : 'profileController'
         })

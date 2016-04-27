@@ -33,5 +33,13 @@ app.controller('driveController', ['$scope', '$http', function($scope, $http) {
 }]);
 
 app.controller('profileController', ['$scope', '$http', function($scope, $http) {
+    $scope.profile = false;
+    $http.get('/profile').success(function(data) {
+        console.log(data);
+        if(!data.error) {
+            $scope.profile = true;
+            $scope.user = data.user;
+        }
 
+    });
 }]);
