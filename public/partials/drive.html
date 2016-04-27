@@ -18,12 +18,15 @@
           <li class="active"><a href="#/drive">Drive</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Username <span class="caret"></span></a>
+          <li ng-hide="profile">
+            <a href="#/home">Not Logged In</a>
+          </li>
+          <li ng-show="profile" class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.local.name}}<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Um</a></li>
+              <li><a href="#">K</a></li>
+              <li><a href="/logout">Logout</a></li>
             </ul>
           </li>
         </ul>
@@ -32,7 +35,7 @@
   </nav>
 
   <div class="container">
-    <div><p class="lead">I want to vonlunteer to drive!</p></div>
+    <div><p class="lead">I want to volunteer to drive!</p></div>
   </div>
 
   <!-- Submit forms -->
