@@ -14,7 +14,8 @@ require('./config/passport')(passport);
 
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(bodyParser());
+//app.use(bodyParser());
+app.use( bodyParser.urlencoded({ extended: true }) );
 
 app.use(session({ secret: 'LABS final project' }));
 app.use(express.static(__dirname + '/public'));

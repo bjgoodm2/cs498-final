@@ -39,5 +39,18 @@
         <p class="lead">I am Sifan. I own a spacious Toyota. I have been driving for 5 years. Let's go have some fun!</p>
       </div>
     </div>
+    <div class="well" ng-show="profile">
+      <h3><span class="fa fa-user"></span> Profile</h3>
+
+      <p>
+        <strong>id</strong>: {{user._id}}<br>
+        <strong>email</strong>: {{user.local.email}}<br>
+        <strong>password</strong>: {{user.local.password}}
+      </p>
+    </div>
+    <div class="jumbotron text-center" ng-hide="profile">
+      <a href="/login.html" class="button">Login</a>
+      <a href="/signup.html" class="button">Signup</a>
+    </div>
   </div>
 </div>

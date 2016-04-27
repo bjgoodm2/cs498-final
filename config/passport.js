@@ -14,15 +14,19 @@ module.exports = function(passport) {
 
         passport.use('local-signup', new LocalStrategy({
                 usernameField : 'email',
-                passwordField : 'password',
+                passwordField : 'password'
         },
         function(email, password, done) {
                 User.findOne({'local.email' : email}, function(err, user) {
-                        if(err)
-                                return done(err);
+                        if(err) {
+                            console.log(err);
+                            return done(err);
+                        }
                         if(user) {
+                            console.log(user);
                                 return done(null, false);
                         } else {
+                            console.log("creating new user");
                                 var newUser = new User();
 
                                 newUser.local.email = email;

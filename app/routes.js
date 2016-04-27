@@ -2,34 +2,34 @@ var Offer = require('../app/models/offer');
 
 module.exports = function(app, passport) {
 
-        // Passport functions
-        app.post('/signup', passport.authenticate('local-signup'), function(req, res) {
-                res.redirect('/profile.html');
-        });
+	// Passport functions
+	app.post('/signup', passport.authenticate('local-signup'), function(req, res) {
+			res.redirect('/#/profile.html');
+	});
 
-        app.post('/login', passport.authenticate('local-login'), function(req, res) {
-                res.redirect('/profile.html');
-        });
+	app.post('/login', passport.authenticate('local-login'), function(req, res) {
+			res.redirect('/#/profile.html');
+	});
 
-        app.get('/profile', isLoggedIn, function(req, res) {
-                res.json({
-                        user: req.user
-                });
-        });
+	app.get('/profile', isLoggedIn, function(req, res) {
+			res.json({
+					user: req.user
+			});
+	});
 
-        app.get('/logout', function(req, res) {
-                req.logout();
-                res.redirect('/');
-        });
+	app.get('/logout', function(req, res) {
+			req.logout();
+			res.redirect('/');
+	});
 
-        function isLoggedIn(req, res, next) {
-                if(req.isAuthenticated())
-                        return next();
+	function isLoggedIn(req, res, next) {
+			if(req.isAuthenticated())
+					return next();
 
-                res.json({
-                        error: "User not logged in"
-                });
-        };
+			res.json({
+					error: "User not logged in"
+			});
+	};
 
         // Offer routes
 	app.post('/offers', function(req, res) {
@@ -55,41 +55,41 @@ module.exports = function(app, passport) {
 
 	app.get('/offers', function(req, res) {
 		var where = {};
-     		if(req.query.where)
-     			where = eval("("+req.query.where+")");
+		if(req.query.where)
+			where = eval("("+req.query.where+")");
 
-     		var sort = {};
-     		if(req.query.sort)
-     			sort = eval("("+req.query.sort+")");
+		var sort = {};
+		if(req.query.sort)
+			sort = eval("("+req.query.sort+")");
 
-     		var select = {};
-     		if(req.query.select)
-     			select = eval("("+req.query.select+")");
+		var select = {};
+		if(req.query.select)
+			select = eval("("+req.query.select+")");
 
-     		var limit = 100;
-     		if(req.query.limit)
-     			limit = req.query.limit;
+		var limit = 100;
+		if(req.query.limit)
+			limit = req.query.limit;
 
-     		var count = 'false';
-     		if(req.query.count)
-     			count = req.query.count;
+		var count = 'false';
+		if(req.query.count)
+			count = req.query.count;
 
-     		Offer.find(function(err, offers){
-           		if (err) {
-           			res.status(500);
-           			res.send(err);
-           		}
-           		if(count == 'true')
-           			res.json({message: 'OK', data: offers.length});
-           		else
-           			res.json({message: 'OK', data: offers});
-           	})
-     		.limit(limit)
-     		.sort(sort)
-     		.select(select);
-     	});
+		Offer.find(function(err, offers){
+			if (err) {
+				res.status(500);
+				res.send(err);
+			}
+			if(count == 'true')
+				res.json({message: 'OK', data: offers.length});
+			else
+				res.json({message: 'OK', data: offers});
+		})
+		.limit(limit)
+		.sort(sort)
+		.select(select);
+	});
 
-        app.get('/offers/:id', function(req, res) {
+	app.get('/offers/:id', function(req, res) {
 		Offer.findById(req.params.id, function(err, offer) {
 			if(err) {
 				res.status(500);
