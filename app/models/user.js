@@ -6,6 +6,9 @@ var userSchema = mongoose.Schema({
                 email           : String,
                 password        : String,
                 name            : String,
+                description     : String,
+                userPicUrl      : String,
+                carPicUrl       : String,
                 driveOffers     : {type: [String], default: []}
         }
 });
