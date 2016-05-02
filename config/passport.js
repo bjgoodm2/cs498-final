@@ -28,17 +28,35 @@ module.exports = function(passport) {
                                 return done(null, false);
                         } else {
                             console.log("creating new user");
-                                var newUser = new User();
+                            var newUser = new User();
 
-                                newUser.local.email = email;
-                                newUser.local.name = req.param('name');
-                                newUser.local.password = newUser.generateHash(password);
+                            newUser.local.email = email;
+                            newUser.local.name = req.param('name');
+                            if(req.param('description') && req.param('description') !== "") {
+                                newUser.local.description = req.param('description');
+                            } else {
+                                newUser.local.description = "";
+                            }
 
-                                newUser.save(function(err) {
-                                        if(err)
-                                                throw err;
-                                        return done(null, newUser);
-                                });
+                            if(req.param('userPicUrl') && req.param('userPicUrl') !== "") {
+                                newUser.local.userPicUrl = req.param('userPicUrl');
+                            } else {
+                                newUser.local.userPicUrl = "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png";
+                            }
+
+                            if(req.param('carPicUrl') && req.param('carPicUrl') !== "") {
+                                newUser.local.carPicUrl = req.param('carPicUrl');
+                            } else {
+                                newUser.local.carPicUrl = "https://image.freepik.com/free-icon/car-black-side-silhouette_318-43519.png";
+                            }
+
+                            newUser.local.password = newUser.generateHash(password);
+
+                            newUser.save(function(err) {
+                                    if(err)
+                                            throw err;
+                                    return done(null, newUser);
+                            });
                         }
 
                 });

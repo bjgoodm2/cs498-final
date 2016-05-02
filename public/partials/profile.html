@@ -35,11 +35,11 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4">
-        <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="profile" class="img-rounded profile-photo" height="100px">
-        <img src="http://www.kia.sc/Images/vehicles/optima/img-carOptima980.jpg" alt="car" class="img-rounded car-thumb" height="100px">
+        <img ng-src="{{user.local.userPicUrl}}" alt="profile" class="img-rounded profile-photo" height="100px">
+        <img ng-src="{{user.local.carPicUrl}}" alt="car" class="img-rounded car-thumb" height="100px">
       </div>
       <div class="col-xs-12 col-sm-8">
-        <p class="lead">I am Sifan. I own a spacious Toyota. I have been driving for 5 years. Let's go have some fun!</p>
+        <p class="lead">{{user.local.description}}</p>
       </div>
     </div>
     <div class="well" ng-show="profile">
@@ -49,6 +49,9 @@
         <strong>id</strong>: {{user._id}}<br>
         <strong>name</strong>: {{user.local.name}}<br>
         <strong>email</strong>: {{user.local.email}}<br>
+        <strong>description</strong>: {{user.local.description}}<br>
+        <strong>profile pic url</strong>: {{user.local.userPicUrl}}<br>
+        <strong>car pic url</strong>: {{user.local.carPicUrl}}<br>
         <strong>password</strong>: {{user.local.password}}
       </p>
       <a href="" data-toggle="modal" data-target="#loginModal" class="btn btn-primary btn-lg center-block" role="button">Edit</a>
@@ -70,12 +73,24 @@
         <div class="modal-body">
               <form name="editUserForm" action="{{'/api/users/' + user._id }}" method="post">
                 <div class="form-group">
-                  <label for="loginEmailInput">Email</label>
+                  <label for="loginEmailInput">Email<span style="color:red">*</span></label>
                   <input type="email" class="form-control" id="loginEmailInput" name="email" value="{{user.local.email}}">
                 </div>
                 <div class="form-group">
-                  <label for="loginNameInput">Name</label>
+                  <label for="loginNameInput">Name<span style="color:red">*</span></label>
                   <input type="text" class="form-control" id="loginNameInput" name="name" value="{{user.local.name}}">
+                </div>
+                <div class="form-group">
+                  <label for="loginDescriptionInput">Description</label>
+                  <textarea class="form-control" id="loginDescriptionInput" name="description">{{user.local.description}}</textarea>
+                </div>
+                <div class="form-group">
+                  <label for="loginUserPicUrlInput">User Picture Url</label>
+                  <input type="text" class="form-control" id="loginUserPicUrlInput" name="userPicUrl" value="{{user.local.userPicUrl}}">
+                </div>
+                <div class="form-group">
+                  <label for="loginCarPicUrlInput">Car Picture Url</label>
+                  <input type="text" class="form-control" id="loginCarPicUrlInput" name="carPicUrl" value="{{user.local.carPicUrl}}">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit Changes</button>
               </form>
