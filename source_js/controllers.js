@@ -53,6 +53,17 @@ app.controller('driveController', ['$scope', '$http', function($scope, $http) {
             });
         });
     };
+
+    $scope.postOffer = function(driverId, name, email, origin, destination, departureDate, carType){
+        var reqBody = {driverId : driverId, name : name, email : email, origin : origin, destination : destination, departureDate : departureDate, carType : carType};
+	$scope.etc = reqBody;
+        $http.post('/api/offers', {'destination' : 'Space'}).success(function(data){
+            $scope.retVals = data;
+        }).error(function(data){
+            $scope.retVals = data;
+        });
+    };
+
 }]);
 
 app.controller('profileController', ['$scope', '$http', function($scope, $http) {

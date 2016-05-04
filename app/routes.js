@@ -41,6 +41,7 @@ module.exports = function(app, passport) {
 	var offersRoute = router.route('/offers');
 
 	offersRoute.post(function(req, res) {
+                console.log(req);
 		var offer = new Offer();
 		offer.driverId = req.body.driverId;
 		offer.name = req.body.name;
@@ -115,6 +116,28 @@ module.exports = function(app, passport) {
 			}
 		});
 	});
+
+        offerRoute.delete(function(req, res){
+                Offer.findById(req.params.id, function(err, offer){
+                        if(err){
+                                res.status(500);
+                                res.send(err);
+                        }
+                        if(offer == null){
+                                res.status(404);
+                                res.json({message: 'Not found', data: offer});
+                        }
+                        else {
+                                offer.remove(function(err) {
+                                        if (err) {
+                                                res.status(500);
+                                                res.send(err);
+                                        }
+                                        res.json({message: 'Offer deleted', data: []});
+                                });
+                        }
+                });
+        });
 
 	//specific user routes
 	var userRoute = router.route('/users/:id');

@@ -39,7 +39,7 @@
 
   <!-- Submit forms -->
   <div class="container">
-    <form>
+    <form ng-submit="postOffer(user.local._id, user.local.name, user.local.email, asyncOriginSelected, asyncDestSelected, departureDate, user.local.carPicUrl)">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -65,7 +65,7 @@
           <div class="form-group">
             <!-- For screen readers -->
             <label class="sr-only" for="startDateInput">Date of departure</label>
-            <input type="date" class="form-control" id="startDateInput" placeholder="Start date">
+            <input type="date" class="form-control" id="startDateInput" ng-model="departureDate" placeholder="Start date">
           </div>
 
           <label for="startDateInput">Time:</label><br>
@@ -75,7 +75,8 @@
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary btn-lg center-block">Submit</button>
+      <!--button type="button" class="btn btn-primary btn-lg center-block">Submit</button-->
+      <input type="submit" class="btn btn-primary btn-lg center-block" value="Submit"/>
     </form>
   </div>
 </div>
