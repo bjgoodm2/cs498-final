@@ -2,10 +2,28 @@ app.controller('homeController', ['$scope', '$http', function($scope, $http) {
     $scope.profile = false;
     $http.get('/profile').success(function(data) {
         console.log(data);
-        if (!data.error) {
+        if(!data.error) {
             $scope.profile = true;
             $scope.user = data.user;
         }
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                css3:true,
+                scrollBar:true,
+                afterRender: function () {
+                    //on page load, start the slideshow
+                    slideTimeout = setInterval(function () {
+                        $.fn.fullpage.moveSlideRight();
+                    }, 3000);
+                }
+
+            });
+        });  // end fullpage
+    });
+    $.fn.fullpage.destroy('all');
+    $(".scrollTop").click(function() {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
     });
 }]);
 
