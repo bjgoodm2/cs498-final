@@ -57,7 +57,7 @@
         <strong>password</strong>: {{user.local.password}}
       </p>
       <a href="" data-toggle="modal" data-target="#loginModal" class="btn btn-primary btn-lg center-block" role="button">Edit</a>
-      <a href="" class="btn btn-primary btn-lg center-block" role="button">I hate your app, delete my user pls</a>
+      <a href="" ng-click="deleteUser(user._id)" class="btn btn-primary btn-lg center-block" role="button">I hate your app, delete my user pls</a>
     </div>
     <div class="jumbotron text-center" ng-hide="profile">
       <a href="/login.html" class="button">Login</a>
