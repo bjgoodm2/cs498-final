@@ -48,6 +48,7 @@ module.exports = function(app, passport) {
 		offer.origin = req.body.origin;
 		offer.destination = req.body.destination;
 		offer.departureDate = req.body.departureDate;
+		offer.departureTime = req.body.departureTime;
 		offer.carType = req.body.carType;
 		offer.save(function(err) {
 			if(err) {

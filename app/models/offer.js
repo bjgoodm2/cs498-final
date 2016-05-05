@@ -9,6 +9,7 @@ var OfferSchema   = new mongoose.Schema({
     origin: String,
     destination: String,
     departureDate: Date,
+    departureTime: String,
     carType: String
 });
 

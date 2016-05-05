@@ -80,9 +80,9 @@
     </div>
     <div ng-repeat="offer in offers" class="panel panel-default">
       <div class="panel-body">
-        <img ng-src="{{offer.driverPicUrl}}" alt="..." class="img-rounded profile-thumb" height="100px">
-        <p>{{offer.departureDate | date : 'medium'}}</p>
-        <p>User is driving from {{offer.origin}} to {{offer.destination}}</p>
+        <img ng-src="{{offer.carType}}" alt="..." class="img-rounded profile-thumb" height="100px">
+        <p>{{offer.departureDate | date : 'mediumDate'}} at {{offer.departureTime | date : 'shortTime'}}</p>
+        <p>{{offer.name}} is driving from {{offer.origin}} to {{offer.destination}}</p>
       </div>
     </div>
   </div>
