@@ -97,6 +97,18 @@ module.exports = function(app, passport) {
 		.select(select);
 	});
 
+	offersRoute.delete(function(req,res){
+		if(req.body.id == 'all'){
+			Offer.remove({}, function(err){
+				if (err) {
+					res.status(500);
+					res.send(err);
+				}
+				res.json({message: 'All offers deleted', data: []});
+			})
+		}
+	});
+
 	//specific offer routes
 	var offerRoute = router.route('/offers/:id');
 
@@ -115,6 +127,28 @@ module.exports = function(app, passport) {
 			}
 		});
 	});
+
+        offerRoute.delete(function(req, res){
+                Offer.findById(req.params.id, function(err, offer){
+                        if(err){
+                                res.status(500);
+                                res.send(err);
+                        }
+                        if(offer == null){
+                                res.status(404);
+                                res.json({message: 'Not found', data: offer});
+                        }
+                        else {
+                                offer.remove(function(err) {
+                                        if (err) {
+                                                res.status(500);
+                                                res.send(err);
+                                        }
+                                        res.json({message: 'Offer deleted', data: []});
+                                });
+                        }
+                });
+        });
 
 	//specific user routes
 	var userRoute = router.route('/users/:id');
