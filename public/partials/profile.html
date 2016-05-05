@@ -41,6 +41,7 @@
         <img ng-src="{{user.local.carPicUrl}}" alt="car" class="img-rounded car-thumb" height="100px">
       </div>
       <div class="col-xs-12 col-sm-8">
+        <h2>Bio</h2>
         <p class="lead">{{user.local.description}}</p>
       </div>
     </div>
@@ -48,16 +49,15 @@
       <h3><span class="fa fa-user"></span> Profile</h3>
 
       <p>
-        <strong>id</strong>: {{user._id}}<br>
-        <strong>name</strong>: {{user.local.name}}<br>
-        <strong>email</strong>: {{user.local.email}}<br>
-        <strong>description</strong>: {{user.local.description}}<br>
-        <strong>profile pic url</strong>: {{user.local.userPicUrl}}<br>
-        <strong>car pic url</strong>: {{user.local.carPicUrl}}<br>
-        <strong>password</strong>: {{user.local.password}}
+        <strong>Name</strong>: {{user.local.name}}<br>
+        <strong>Email</strong>: {{user.local.email}}<br>
+        <strong>Profile Pic URL</strong>: {{user.local.userPicUrl}}<br>
+        <strong>Car Pic URL</strong>: {{user.local.carPicUrl}}
       </p>
-      <a href="" data-toggle="modal" data-target="#loginModal" class="btn btn-primary btn-lg center-block" role="button">Edit</a>
-      <a href="" ng-click="deleteUser(user._id)" class="btn btn-primary btn-lg center-block" role="button">I hate your app, delete my user pls</a>
+      <div>
+      <a href="" data-toggle="modal" data-target="#loginModal" class="btn btn-primary btn-lg" role="button">Edit</a>
+      <a href="" ng-click="deleteUser(user._id)" class="pull-right btn btn-primary btn-lg btn-danger" role="button">I hate your app, delete my user pls</a>
+      </div>
     </div>
     <div class="jumbotron text-center" ng-hide="profile">
       <a href="/login.html" class="button">Login</a>
