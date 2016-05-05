@@ -1,4 +1,4 @@
-body { padding-top: 80px; }
+.not-full-page { padding-top: 110px; }
 
 * {
 	box-sizing: border-box;
@@ -94,11 +94,18 @@ body { padding-top: 80px; }
 	margin-right: 20px;
 }
 
+//=======All Sections=======
+#section0, #section1, #section2, #section3{
+	background-size: cover;
+}
+
 //=======Section1===========
 #section1 {
 	width:100%;
 	display:block;
 	position:relative;
+	background-image: url(../data/pics/background-road.jpg);
+	padding: 30% 0 0 0;
 }
 
 
