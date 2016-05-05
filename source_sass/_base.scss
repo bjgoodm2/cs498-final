@@ -1,4 +1,4 @@
-//body { padding-top: 70px; }
+body { padding-top: 80px; }
 
 * {
 	box-sizing: border-box;
@@ -14,20 +14,46 @@
 	background-color: transparent;
 }
 
+.icon-bar {
+    background-color: white;
+}
+
 .section {
 	text-align:center;
 	//overflow:hidden;
 }
 
-.heading {
+@media (max-width: 767px) {
+	.heading {
 	font-family: $font-stack;
-	font-size:1000%;
+	font-size:400%;	
+	}
+
+	.background-image {
+	height:100%;
+	z-index:30;
+	}
 }
 
-.lead {
+@media(min-width: 767px){
+	.heading {
+	font-family: $font-stack;
+	font-size:1000%;	
+	}
+
+	.lead {
 	font-family: $font-stack;
 	font-size:200%;
+	}
+
+	.background-image {
+	height:100%;
+	width:100%;
+	z-index:30;
+	}
 }
+
+
 
 //=======Nav bar============
 .navbar-brand {
@@ -39,6 +65,11 @@
 .navbar {
 	padding-top:30px;
 	font-family: $font-stack;
+}
+
+.navbar-default {
+	background-color:transparent !important;
+
 }
 
 .navbar-nav a{
@@ -70,11 +101,7 @@
 	position:relative;
 }
 
-.background-image {
-	height:100%;
-	width:100%;
-	z-index:30;
-}
+
 
 .above-image {
 	color:white;
