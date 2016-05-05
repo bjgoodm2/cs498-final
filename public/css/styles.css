@@ -61,14 +61,10 @@
 
 /* line 65, ../../source_sass/_base.scss */
 .navbar {
-  padding-top: 30px;
+  padding: 20px 0;
   font-family: "Raleway", sans-serif; }
 
-/* line 70, ../../source_sass/_base.scss */
-.navbar-default {
-  background-color: transparent !important; }
-
-/* line 75, ../../source_sass/_base.scss */
+/* line 74, ../../source_sass/_base.scss */
 .navbar-nav a {
   display: block;
   color: white;
@@ -78,23 +74,23 @@
   text-decoration: none;
   background-color: transparent !important; }
 
-/* line 85, ../../source_sass/_base.scss */
+/* line 84, ../../source_sass/_base.scss */
 .navbar-nav a:hover:not(.active) {
   border-bottom: 2px solid white; }
 
-/* line 89, ../../source_sass/_base.scss */
+/* line 88, ../../source_sass/_base.scss */
 .navbar-nav a.active {
   border-bottom: 2px solid white; }
 
-/* line 93, ../../source_sass/_base.scss */
+/* line 92, ../../source_sass/_base.scss */
 .login {
   margin-right: 20px; }
 
-/* line 98, ../../source_sass/_base.scss */
+/* line 97, ../../source_sass/_base.scss */
 #section0, #section1, #section2, #section3 {
   background-size: cover; }
 
-/* line 103, ../../source_sass/_base.scss */
+/* line 102, ../../source_sass/_base.scss */
 #section1 {
   width: 100%;
   display: block;
@@ -102,7 +98,7 @@
   background-image: url(../data/pics/background-road.jpg);
   padding: 30% 0 0 0; }
 
-/* line 113, ../../source_sass/_base.scss */
+/* line 112, ../../source_sass/_base.scss */
 .above-image {
   color: white;
   position: absolute;
@@ -111,15 +107,15 @@
   top: 50%;
   transform: translate(-50%, -50%); }
 
-/* line 122, ../../source_sass/_base.scss */
+/* line 121, ../../source_sass/_base.scss */
 .right {
   color: white; }
 
-/* line 127, ../../source_sass/_base.scss */
+/* line 126, ../../source_sass/_base.scss */
 .slide {
   position: relative; }
 
-/* line 131, ../../source_sass/_base.scss */
+/* line 130, ../../source_sass/_base.scss */
 .above-image2 {
   color: white;
   position: absolute;

@@ -14,7 +14,7 @@ app.controller('homeController', ['$scope', '$http', function($scope, $http) {
                     //on page load, start the slideshow
                     slideTimeout = setInterval(function () {
                         $.fn.fullpage.moveSlideRight();
-                    }, 3000);
+                    }, 5000);
                 }
 
             });
