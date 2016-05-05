@@ -1,4 +1,4 @@
-<div ng-controller="findController">
+<div class="not-full-page" ng-controller="findController">
   <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -76,6 +76,13 @@
         <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="..." class="img-rounded profile-thumb" height="100px">
         <p>Sunday, April 24, 5pm</p>
         <p>User is driving from Champaign to Chicago</p>
+      </div>
+    </div>
+    <div ng-repeat="offer in offers" class="panel panel-default">
+      <div class="panel-body">
+        <img ng-src="{{offer.carType}}" alt="..." class="img-rounded profile-thumb" height="100px">
+        <p>{{offer.departureDate | date : 'mediumDate'}} at {{offer.departureTime | date : 'shortTime'}}</p>
+        <p>{{offer.name}} is driving from {{offer.origin}} to {{offer.destination}}</p>
       </div>
     </div>
   </div>

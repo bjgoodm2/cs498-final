@@ -36,6 +36,19 @@ app.controller('findController', ['$scope', '$http', function($scope, $http) {
             $scope.user = data.user;
         }
     });
+    $http.get('/api/offers').success(function(res) {
+        console.log(res);
+        $scope.offers = res.data;
+        /*for(var i=0; i<$scope.offers.length; i++) {
+            console.log($scope.offers[i]);
+            var offer_uid = $scope.offers[i].driverId;
+            $http.get('/api/users/'+offer_uid).success((function(idx) {
+                return function(res) {
+                    $scope.offers[idx].driverPicUrl = res.data.local.userPicUrl;
+                }
+            })(i));
+        }*/
+    });
     $scope.getLocation = function(val) {
         return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
             params: {
@@ -73,13 +86,14 @@ app.controller('driveController', ['$scope', '$http', function($scope, $http) {
         });
     };
 
-    $scope.postOffer = function(driverId, name, email, origin, destination, departureDate, carType){
+    $scope.postOffer = function(driverId, name, email, origin, destination, departureDate, departureTime, carType){
         var reqBody = {
             driverId : driverId,
             name : name, email : email,
             origin : origin,
             destination : destination,
             departureDate : departureDate,
+            departureTime : departureTime,
             carType : carType
         };
         $http.post('/api/offers', reqBody).success(function(data){

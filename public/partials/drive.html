@@ -1,4 +1,4 @@
-<div ng-controller="driveController">
+<div class="not-full-page" ng-controller="driveController">
   <!-- Nav bar -->
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -41,7 +41,7 @@
 
   <!-- Submit forms -->
   <div class="container">
-    <form ng-submit="postOffer(user._id, user.local.name, user.local.email, asyncOriginSelected, asyncDestSelected, departureDate, user.local.carPicUrl)">
+    <form ng-submit="postOffer(user._id, user.local.name, user.local.email, asyncOriginSelected, asyncDestSelected, departureDate, departureTime, user.local.carPicUrl)">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -72,8 +72,8 @@
 
           <label for="startDateInput">Time:</label><br>
           <div class="form-group">
-            <label class="sr-only" for="startDateInput">Time</label>
-            <input type="time" class="form-control" id="timeInput">
+            <label class="sr-only" for="timeInput">Time</label>
+            <input type="time" class="form-control" id="timeInput" ng-model="departureTime">
           </div>
         </div>
       </div>
