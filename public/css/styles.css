@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 /* line 1, ../../source_sass/_base.scss */
-body {
-  padding-top: 80px; }
+.not-full-page {
+  padding-top: 110px; }
 
 /* line 3, ../../source_sass/_base.scss */
 * {
@@ -91,12 +91,18 @@ body {
   margin-right: 20px; }
 
 /* line 98, ../../source_sass/_base.scss */
+#section0, #section1, #section2, #section3 {
+  background-size: cover; }
+
+/* line 103, ../../source_sass/_base.scss */
 #section1 {
   width: 100%;
   display: block;
-  position: relative; }
+  position: relative;
+  background-image: url(../data/pics/background-road.jpg);
+  padding: 30% 0 0 0; }
 
-/* line 106, ../../source_sass/_base.scss */
+/* line 113, ../../source_sass/_base.scss */
 .above-image {
   color: white;
   position: absolute;
@@ -105,15 +111,15 @@ body {
   top: 50%;
   transform: translate(-50%, -50%); }
 
-/* line 115, ../../source_sass/_base.scss */
+/* line 122, ../../source_sass/_base.scss */
 .right {
   color: white; }
 
-/* line 120, ../../source_sass/_base.scss */
+/* line 127, ../../source_sass/_base.scss */
 .slide {
   position: relative; }
 
-/* line 124, ../../source_sass/_base.scss */
+/* line 131, ../../source_sass/_base.scss */
 .above-image2 {
   color: white;
   position: absolute;
