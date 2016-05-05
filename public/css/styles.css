@@ -1,14 +1,104 @@
-/* line 1, ../../source_sass/_base.scss */
-body {
-  padding-top: 70px; }
-
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 /* line 3, ../../source_sass/_base.scss */
+* {
+  box-sizing: border-box; }
+
+/* line 7, ../../source_sass/_base.scss */
 .profile-thumb {
   float: left; }
 
-/* line 5, ../../source_sass/_base.scss */
+/* line 9, ../../source_sass/_base.scss */
 .profile-photo {
   display: block; }
+
+/* line 13, ../../source_sass/_base.scss */
+.navbar-header {
+  background-color: transparent; }
+
+/* line 17, ../../source_sass/_base.scss */
+.section {
+  text-align: center; }
+
+/* line 22, ../../source_sass/_base.scss */
+.heading {
+  font-family: "Raleway", sans-serif;
+  font-size: 1000%; }
+
+/* line 27, ../../source_sass/_base.scss */
+.lead {
+  font-family: "Raleway", sans-serif;
+  font-size: 200%; }
+
+/* line 33, ../../source_sass/_base.scss */
+.navbar-brand {
+  margin-left: 10px;
+  margin-right: 20px;
+  transform: translate(0, -50%); }
+
+/* line 39, ../../source_sass/_base.scss */
+.navbar {
+  padding-top: 30px;
+  font-family: "Raleway", sans-serif; }
+
+/* line 44, ../../source_sass/_base.scss */
+.navbar-nav a {
+  display: block;
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: transparent !important; }
+
+/* line 54, ../../source_sass/_base.scss */
+.navbar-nav a:hover:not(.active) {
+  border-bottom: 2px solid white; }
+
+/* line 58, ../../source_sass/_base.scss */
+.navbar-nav a.active {
+  border-bottom: 2px solid white; }
+
+/* line 62, ../../source_sass/_base.scss */
+.login {
+  margin-right: 20px; }
+
+/* line 67, ../../source_sass/_base.scss */
+#section1 {
+  width: 100%;
+  display: block;
+  position: relative; }
+
+/* line 73, ../../source_sass/_base.scss */
+.background-image {
+  height: 100%;
+  width: 100%;
+  z-index: 30; }
+
+/* line 79, ../../source_sass/_base.scss */
+.above-image {
+  color: white;
+  position: absolute;
+  z-index: 50;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
+/* line 88, ../../source_sass/_base.scss */
+.right {
+  color: white; }
+
+/* line 93, ../../source_sass/_base.scss */
+.slide {
+  position: relative; }
+
+/* line 97, ../../source_sass/_base.scss */
+.above-image2 {
+  color: white;
+  position: absolute;
+  z-index: 50;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
 
 /*
   NOTE: Do not touch this file. Write the bulk of your custom styles
