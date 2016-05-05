@@ -110,10 +110,17 @@ app.controller('driveController', ['$scope', '$http', function($scope, $http) {
 app.controller('profileController', ['$scope', '$http', function($scope, $http) {
     $scope.profile = false;
     $http.get('/profile').success(function(data) {
-        console.log(data);
+        //console.log(data);
         if(!data.error) {
             $scope.profile = true;
             $scope.user = data.user;
         }
     });
+    $scope.deleteUser = function(userId){
+        $http.delete('/api/user/' + userId).success(function(data){
+            console.log(data);
+        }).error(function(data){
+            console.log(data);
+        })
+    }
 }]);

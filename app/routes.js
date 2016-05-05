@@ -151,6 +151,46 @@ module.exports = function(app, passport) {
                 });
         });
 
+	//users route
+
+	var usersRoute = router.route('/users');
+	usersRoute.get(function(req, res) {
+		var where = {};
+		if(req.query.where)
+			where = eval("("+req.query.where+")");
+
+		var sort = {};
+		if(req.query.sort)
+			sort = eval("("+req.query.sort+")");
+
+		var select = {};
+		if(req.query.select)
+			select = eval("("+req.query.select+")");
+
+		var limit = 100;
+		if(req.query.limit)
+			limit = req.query.limit;
+
+		var count = 'false';
+		if(req.query.count)
+			count = req.query.count;
+
+		User.find(function(err, users){
+			if (err) {
+				res.status(500);
+				res.send(err);
+			}
+			if(count == 'true')
+				res.json({message: 'OK', data: users.length});
+			else
+				res.json({message: 'OK', data: users});
+		})
+			.limit(limit)
+			.sort(sort)
+			.select(select);
+	});
+
+
 	//specific user routes
 	var userRoute = router.route('/users/:id');
 
@@ -187,7 +227,6 @@ module.exports = function(app, passport) {
 						res.send(err);
 					}
 					res.json({message: 'User deleted', data: []});
-					res.redirect('/');
 				});
 			}
 		});
