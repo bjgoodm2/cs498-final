@@ -41,7 +41,6 @@ module.exports = function(app, passport) {
 	var offersRoute = router.route('/offers');
 
 	offersRoute.post(function(req, res) {
-                console.log(req);
 		var offer = new Offer();
 		offer.driverId = req.body.driverId;
 		offer.name = req.body.name;
@@ -96,6 +95,18 @@ module.exports = function(app, passport) {
 		.limit(limit)
 		.sort(sort)
 		.select(select);
+	});
+
+	offersRoute.delete(function(req,res){
+		if(req.body.id == 'all'){
+			Offer.remove({}, function(err){
+				if (err) {
+					res.status(500);
+					res.send(err);
+				}
+				res.json({message: 'All offers deleted', data: []});
+			})
+		}
 	});
 
 	//specific offer routes

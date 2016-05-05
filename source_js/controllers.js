@@ -34,6 +34,7 @@ app.controller('findController', ['$scope', '$http', function($scope, $http) {
 
 app.controller('driveController', ['$scope', '$http', function($scope, $http) {
     $scope.profile = false;
+    $scope.offerPosted = false;
     $http.get('/profile').success(function(data) {
         console.log(data);
         if(!data.error) {
@@ -55,12 +56,20 @@ app.controller('driveController', ['$scope', '$http', function($scope, $http) {
     };
 
     $scope.postOffer = function(driverId, name, email, origin, destination, departureDate, carType){
-        var reqBody = {driverId : driverId, name : name, email : email, origin : origin, destination : destination, departureDate : departureDate, carType : carType};
-	$scope.etc = reqBody;
-        $http.post('/api/offers', {'destination' : 'Space'}).success(function(data){
-            $scope.retVals = data;
+        var reqBody = {
+            driverId : driverId,
+            name : name, email : email,
+            origin : origin,
+            destination : destination,
+            departureDate : departureDate,
+            carType : carType
+        };
+        $http.post('/api/offers', reqBody).success(function(data){
+            $scope.retVals = data.data;
+            $scope.offerPosted = true;
         }).error(function(data){
-            $scope.retVals = data;
+            $scope.retVals = data.data;
+            $scope.offerPosted = false;
         });
     };
 
