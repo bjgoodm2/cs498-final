@@ -90,7 +90,8 @@ app.controller('driveController', ['$scope', '$http', function($scope, $http) {
     $scope.postOffer = function(driverId, name, email, origin, destination, departureDate, departureTime, carType){
         var reqBody = {
             driverId : driverId,
-            name : name, email : email,
+            name : name,
+            email : email,
             origin : origin,
             destination : destination,
             departureDate : departureDate,
@@ -100,6 +101,15 @@ app.controller('driveController', ['$scope', '$http', function($scope, $http) {
         $http.post('/api/offers', reqBody).success(function(data){
             $scope.retVals = data.data;
             $scope.offerPosted = true;
+            var nextReqBody = {
+                driveOffer : data.data._id
+            };
+            $http.put('/api/users/' + driverId, nextReqBody).success(function(data){
+                console.log(data);
+            }).error(function(data){
+                //do something
+                console.log(data);
+            });
         }).error(function(data){
             $scope.retVals = data.data;
             $scope.offerPosted = false;

@@ -257,13 +257,41 @@ module.exports = function(app, passport) {
 						res.send(err);
 					}
 					res.json({message: 'User edited', data: user});
-					res.redirect('/#/profile');
 				});
 			}
 		});
 	});
 
-
-				
-
+	userRoute.put(function(req, res){
+		User.findById(req.params.id, function(err, user){
+			if(err){
+				res.status(500);
+				res.send(err);
+			}
+			if(user == null){
+				res.status(404);
+				res.json({message: 'Not found', data: user});
+			}
+			if(req.body.driveOffer == 'wipedatshit'){
+				user.local.driveOffers = [];
+				user.save(function(err){
+					if(err){
+						res.status(500);
+						res.send(err);
+					}
+					res.json({message: 'User edited', data: user});
+				});
+			}
+			else {
+				user.local.driveOffers.push(req.body.driveOffer);
+				user.save(function (err) {
+					if (err) {
+						res.status(500);
+						res.send(err);
+					}
+					res.json({message: 'User edited', data: user});
+				});
+			}
+		})
+	})
 };
