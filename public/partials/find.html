@@ -78,12 +78,12 @@
         <p>User is driving from Champaign to Chicago</p>
       </div>
     </div>
-  </div>
-  <div ng-repeat="offer in offers" class="panel panel-default">
-    <div class="panel-body">
-      <img ng-src="{{offer.userPicUrl}}" alt="..." class="img-rounded profile-thumb" height="100px">
-      <p>{{offer.departureDate | date : 'medium'}}</p>
-      <p>User is driving from {{offer.origin}} to {{offer.destination}}</p>
+    <div ng-repeat="offer in offers" class="panel panel-default">
+      <div class="panel-body">
+        <img ng-src="{{offer.driverPicUrl}}" alt="..." class="img-rounded profile-thumb" height="100px">
+        <p>{{offer.departureDate | date : 'medium'}}</p>
+        <p>User is driving from {{offer.origin}} to {{offer.destination}}</p>
+      </div>
     </div>
   </div>
 </div>
