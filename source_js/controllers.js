@@ -10,6 +10,7 @@ app.controller('homeController', ['$scope', '$http', function($scope, $http) {
             $('#fullpage').fullpage({
                 css3:true,
                 scrollBar:true,
+                normalScrollElements: '.modal',
                 afterRender: function () {
                     //on page load, start the slideshow
                     slideTimeout = setInterval(function () {
@@ -107,7 +108,7 @@ app.controller('driveController', ['$scope', '$http', function($scope, $http) {
 
 }]);
 
-app.controller('profileController', ['$scope', '$http', function($scope, $http) {
+app.controller('profileController', ['$scope', '$http', '$location', function($scope, $http, $location) {
     $scope.profile = false;
     $http.get('/profile').success(function(data) {
         //console.log(data);
@@ -117,8 +118,11 @@ app.controller('profileController', ['$scope', '$http', function($scope, $http) 
         }
     });
     $scope.deleteUser = function(userId){
-        $http.delete('/api/user/' + userId).success(function(data){
+        console.log('delete User called');
+        console.log(userId);
+        $http.delete('/api/users/' + userId).success(function(data){
             console.log(data);
+            $location.path('/home');
         }).error(function(data){
             console.log(data);
         })

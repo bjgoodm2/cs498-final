@@ -1,6 +1,6 @@
 var app = angular.module('carpool',['ngRoute', 'ui.bootstrap']);
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when('/home', {
             templateUrl : './partials/home.html',
