@@ -10,7 +10,6 @@ var express = require('express'),
         configDB = require('./config/database.js');
 
 mongoose.connect(configDB.url); // db connection
-mongoose.set('debug', true);
 require('./config/passport')(passport);
 
 app.use(morgan('dev'));

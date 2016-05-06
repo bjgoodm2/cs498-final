@@ -92,6 +92,14 @@ img.img-rounded.profile-thumb {
     border-bottom: 2px solid white;
 }
 
+.navbar-default .navbar-nav>li>a:hover:not(.active) {
+	border-bottom: 2px solid #777;
+}
+
+.navbar-default .navbar-nav>li>a.active {
+	border-bottom: 2px solid #777;
+}
+
 .login {
 	margin-right: 20px;
 }

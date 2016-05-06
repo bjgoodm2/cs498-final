@@ -72,7 +72,7 @@
     </form>
     <br>
     <div ng-repeat="offer in offers" class="panel panel-default">
-      <div class="panel-body">
+      <div class="panel-body" ng-click="gotoDriverProfile(offer.driverId)">
         <img ng-src="{{offer.carType}}" alt="Driver's car picture" class="img-rounded profile-thumb" height="100px">
         <p>{{offer.departureDate | date : 'mediumDate'}} at {{offer.departureTime | date : 'shortTime'}}</p>
         <p>{{offer.name}} is driving from {{offer.origin}} to {{offer.destination}}</p>

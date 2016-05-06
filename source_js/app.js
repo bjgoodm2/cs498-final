@@ -18,6 +18,10 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl : './partials/profile.html',
             controller : 'profileController'
         })
+        .when('/profile/:id', {
+            templateUrl : './partials/otherProfile.html',
+            controller : 'otherProfileController'
+        })
         .otherwise({
             redirectTo: '/home'
         })
