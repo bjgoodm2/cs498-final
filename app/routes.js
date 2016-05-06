@@ -131,6 +131,28 @@ module.exports = function(app, passport) {
 		});
 	});
 
+	offerRoute.put(function(req, res){
+		Offer.findById(req.params.id, function(err, offer){
+			if(err){
+				res.status(500);
+				res.send(err);
+			}
+			if(offer == null){
+				res.status(404);
+				res.json({message: 'Not found', data: offer});
+			}
+
+			offer.carType = req.body.carType;
+			offer.save(function (err) {
+				if (err) {
+					res.status(500);
+					res.send(err);
+				}
+				res.json({message: 'Offer edited', data: offer});
+			});
+		})
+	});
+
         offerRoute.delete(function(req, res){
                 Offer.findById(req.params.id, function(err, offer){
                         if(err){
