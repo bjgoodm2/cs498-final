@@ -1,7 +1,6 @@
 app.controller('homeController', ['$scope', '$http', function($scope, $http) {
     $scope.profile = false;
     $http.get('/profile').success(function(data) {
-        console.log(data);
         if(!data.error) {
             $scope.profile = true;
             $scope.user = data.user;
@@ -28,10 +27,10 @@ app.controller('homeController', ['$scope', '$http', function($scope, $http) {
     });
 }]);
 
-app.controller('findController', ['$scope', '$http', function($scope, $http) {
+app.controller('findController', ['$scope', '$http', '$location', function($scope, $http, $location) {
     $scope.profile = false;
+    $scope.search = {};
     $http.get('/profile').success(function(data) {
-        console.log(data);
         if(!data.error) {
             $scope.profile = true;
             $scope.user = data.user;
@@ -55,22 +54,30 @@ app.controller('findController', ['$scope', '$http', function($scope, $http) {
 
     $scope.searchOffers = function() {
         $scope.offers = [];
-        $http.get('/api/offers?where={'+
-                'departureDate: {$gte: new Date("'+ $scope.search.startDate.toISOString()+'"), $lt: new Date("'+$scope.search.endDate.toISOString()+'")},'+
-                'origin: "'+$scope.search.asyncOriginSelected+'", destination: "'+$scope.search.asyncDestSelected+'"}')
-            .success(function(res) {
-                console.log(res);
-                $scope.offers.push.apply($scope.offers, res.data);
+        if(!$scope.search.asyncOriginSelected || $scope.search.asyncOriginSelected === "") {
+            $http.get('/api/offers').success(function(res) {
+                $scope.offers = res.data;
+            })
+        }
+        else {
+            $http.get('/api/offers?where={'+
+                    'departureDate: {$gte: new Date("'+ $scope.search.startDate.toISOString()+'"), $lt: new Date("'+$scope.search.endDate.toISOString()+'")},'+
+                    'origin: "'+$scope.search.asyncOriginSelected+'", destination: "'+$scope.search.asyncDestSelected+'"}')
+                .success(function(res) {
+                    $scope.offers.push.apply($scope.offers, res.data);
 
-                $http.get('/api/offers?where={'+
-                        'departureDate: {$gte: new Date("'+ $scope.search.startDate.toISOString()+'"), $lt: new Date("'+$scope.search.endDate.toISOString()+'")},'+
-                        'origin: "'+$scope.search.asyncOriginSelected+'", destination: { $ne: "'+$scope.search.asyncDestSelected+'"}}')
-                    .success(function(res) {
-                        console.log(res);
-                        $scope.offers.push.apply($scope.offers, res.data);
-                        console.log($scope.offers)
-                    });
-            });
+                    $http.get('/api/offers?where={'+
+                            'departureDate: {$gte: new Date("'+ $scope.search.startDate.toISOString()+'"), $lt: new Date("'+$scope.search.endDate.toISOString()+'")},'+
+                            'origin: "'+$scope.search.asyncOriginSelected+'", destination: { $ne: "'+$scope.search.asyncDestSelected+'"}}')
+                        .success(function(res) {
+                            $scope.offers.push.apply($scope.offers, res.data);
+                        });
+                });
+        }
+    };
+
+    $scope.gotoDriverProfile = function(driverId) {
+        $location.path('/profile/'+driverId);
     }
 }]);
 
@@ -78,7 +85,6 @@ app.controller('driveController', ['$scope', '$http', function($scope, $http) {
     $scope.profile = false;
     $scope.offerPosted = false;
     $http.get('/profile').success(function(data) {
-        console.log(data);
         if(!data.error) {
             $scope.profile = true;
             $scope.user = data.user;
@@ -157,4 +163,19 @@ app.controller('profileController', ['$scope', '$http', '$location', function($s
             console.log(data);
         })
     };
+}]);
+
+app.controller('otherProfileController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+    var userId = $routeParams.id;
+    $scope.profile = false;
+    $http.get('/api/users/'+userId).success(function(res) {
+        $http.get('/api/offers?where={"driverId": "'+ res.data._id +'"}').success(function(res){
+            $scope.currOffers = res.data;
+        });
+        if(!res.error) {
+            $scope.profile = true;
+            $scope.currUser = res.data;
+        }
+    });
+
 }]);
