@@ -34,7 +34,7 @@
     </div>
   </nav>
 
-  <div class="container">
+  <div ng-show="profile" class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4">
         <img ng-src="{{user.local.userPicUrl}}" alt="profile" class="img-rounded profile-photo" height="100px">
@@ -45,9 +45,8 @@
         <p class="lead">{{user.local.description}}</p>
       </div>
     </div>
-    <div class="well" ng-show="profile">
+    <div class="well">
       <h3><span class="fa fa-user"></span> Profile</h3>
-
       <p>
         <strong>Name</strong>: {{user.local.name}}<br>
         <strong>Email</strong>: {{user.local.email}}<br>
@@ -59,9 +58,12 @@
       <a href="" ng-click="deleteUser(user._id)" class="pull-right btn btn-primary btn-lg btn-danger" role="button">I hate your app, delete my user pls</a>
       </div>
     </div>
-    <div class="jumbotron text-center" ng-hide="profile">
-      <a href="/login.html" class="button">Login</a>
-      <a href="/signup.html" class="button">Signup</a>
+    <div class="well">
+      <h3><span class="fa fa-user"></span> Offers</h3>
+      <div ng-repeat="offer in offers" class="panel panel-default">
+        <p>{{offer.departureDate | date : 'mediumDate'}} at {{offer.departureTime | date : 'shortTime'}}</p>
+        <p>You will be driving from {{offer.origin}} to {{offer.destination}}</p>
+      </div>
     </div>
   </div>
 

@@ -121,7 +121,9 @@ app.controller('driveController', ['$scope', '$http', function($scope, $http) {
 app.controller('profileController', ['$scope', '$http', '$location', function($scope, $http, $location) {
     $scope.profile = false;
     $http.get('/profile').success(function(data) {
-        //console.log(data);
+        $http.get('/api/offers?where={"driverId": "'+ data.user._id +'"}').success(function(data){
+            $scope.offers = data.data;
+        });
         if(!data.error) {
             $scope.profile = true;
             $scope.user = data.user;
@@ -136,5 +138,5 @@ app.controller('profileController', ['$scope', '$http', '$location', function($s
         }).error(function(data){
             console.log(data);
         })
-    }
+    };
 }]);
