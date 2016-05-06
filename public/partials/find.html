@@ -35,12 +35,12 @@
 </nav>
 
   <div class="container">
-    <form>
+    <form ng-submit="searchOffers()">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
             <label for="originInput">Origin</label>
-            <input type="text" id="originInput" placeholder="Origin" ng-model="asyncOriginSelected" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingOriginLocations" typeahead-no-results="noOriginResults" class="form-control">
+            <input type="text" id="originInput" placeholder="Origin" autocomplete="off" ng-model="search.asyncOriginSelected" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingOriginLocations" typeahead-no-results="noOriginResults" class="form-control">
             <i ng-show="loadingOriginLocations" class="glyphicon glyphicon-refresh"></i>
             <div ng-show="noOriginResults">
               <i class="glyphicon glyphicon-remove"></i> No Results Found
@@ -48,7 +48,7 @@
           </div>
           <div class="form-group">
             <label for="destInput">Destination</label>
-            <input type="text" id="destInput" placeholder="Destination" ng-model="asyncDestSelected" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingDestLocations" typeahead-no-results="noDestResults" class="form-control">
+            <input type="text" id="destInput" placeholder="Destination" autocomplete="off" ng-model="search.asyncDestSelected" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingDestLocations" typeahead-no-results="noDestResults" class="form-control">
             <i ng-show="loadingDestLocations" class="glyphicon glyphicon-refresh"></i>
             <div ng-show="noDestResults">
               <i class="glyphicon glyphicon-remove"></i> No Results Found
@@ -59,16 +59,16 @@
           <label for="startDateInput">Date range:</label><br>
           <div class="form-group">
             <label class="sr-only" for="startDateInput">Start date</label>
-            <input type="date" class="form-control" id="startDateInput" placeholder="Start date">
+            <input type="date" class="form-control" id="startDateInput" placeholder="Start date" ng-model="search.startDate">
           </div>
           <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
           <div class="form-group">
             <label class="sr-only" for="endDateInput">End date</label>
-            <input type="date" class="form-control" id="endDateInput" placeholder="End date">
+            <input type="date" class="form-control" id="endDateInput" placeholder="End date" ng-model="search.endDate">
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary btn-lg center-block">Search</button>
+      <button type="button" ng-click="searchOffers()" class="btn btn-primary btn-lg center-block">Search</button>
     </form>
     <br>
     <div class="panel panel-default">
@@ -80,17 +80,10 @@
     </div>
     <div ng-repeat="offer in offers" class="panel panel-default">
       <div class="panel-body">
-        <img ng-src="{{offer.carType}}" alt="..." class="img-rounded profile-thumb" height="100px">
+        <img ng-src="{{offer.carType}}" alt="Driver's car picture" class="img-rounded profile-thumb" height="100px">
         <p>{{offer.departureDate | date : 'mediumDate'}} at {{offer.departureTime | date : 'shortTime'}}</p>
         <p>{{offer.name}} is driving from {{offer.origin}} to {{offer.destination}}</p>
       </div>
-    </div>
-  </div>
-  <div ng-repeat="offer in offers" class="panel panel-default">
-    <div class="panel-body">
-      <img ng-src="{{offer.userPicUrl}}" alt="..." class="img-rounded profile-thumb" height="100px">
-      <p>{{offer.departureDate | date : 'medium'}}</p>
-      <p>User is driving from {{offer.origin}} to {{offer.destination}}</p>
     </div>
   </div>
 </div>
