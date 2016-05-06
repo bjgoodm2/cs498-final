@@ -50,10 +50,11 @@
       <p>
         <strong>Name</strong>: {{user.local.name}}<br>
         <strong>Email</strong>: {{user.local.email}}<br>
+        <strong>Phone Number</strong>: {{user.local.cellphone}}<br>
       </p>
       <div>
-      <a href="" data-toggle="modal" data-target="#editModal" class="btn btn-primary btn-lg" role="button">Edit</a>
-      <a href="" ng-click="deleteUser(user._id)" class="pull-right btn btn-primary btn-lg btn-danger" role="button">I hate your app, delete my user pls</a>
+        <a href="" data-toggle="modal" data-target="#editModal" class="btn btn-primary btn-lg" role="button">Edit</a>
+        <a href="" ng-click="deleteUser(user._id)" class="pull-right btn btn-primary btn-lg btn-danger" role="button">I hate your app, delete my user pls</a>
       </div>
     </div>
     <div class="well">
@@ -76,11 +77,15 @@
               <form name="editUserForm" ng-submit="editProfile()">
                 <div class="form-group">
                   <label for="loginEmailInput">Email<span style="color:red">*</span></label>
-                  <input type="email" class="form-control" id="loginEmailInput" name="email" ng-model="user.local.email">
+                  <input type="email" class="form-control" id="loginEmailInput" name="email" ng-model="user.local.email" required>
                 </div>
                 <div class="form-group">
                   <label for="loginNameInput">Name<span style="color:red">*</span></label>
-                  <input type="text" class="form-control" id="loginNameInput" name="name" ng-model="user.local.name">
+                  <input type="text" class="form-control" id="loginNameInput" name="name" ng-model="user.local.name" required>
+                </div>
+                <div class="form-group">
+                  <label for="signupCellInput">Cellphone number<span style="color:red">*</span></label>
+                  <input type="text" class="form-control" id="signupCellInput" name="cellphone" placeholder="(xxx)xxx-xxxx" ng-model="user.local.cellphone" required>
                 </div>
                 <div class="form-group">
                   <label for="loginDescriptionInput">Description</label>
@@ -94,7 +99,7 @@
                   <label for="loginCarPicUrlInput">Car Picture Url</label>
                   <input type="text" class="form-control" id="loginCarPicUrlInput" name="carPicUrl" ng-model="user.local.carPicUrl">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit Changes</button>
+                <button type="submit" ng-disabled="editUserForm.$invalid" class="btn btn-primary">Submit Changes</button>
               </form>
         </div>
       </div><!-- /.modal-content -->
