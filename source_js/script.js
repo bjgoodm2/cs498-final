@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#fullpage').fullpage({
         css3:true,
         scrollBar:true,
-        normalScrollElements: '.modal',
+        normalScrollElements: '.modal, .not-full-page',
         afterRender: function () {
             //on page load, start the slideshow
             slideTimeout = setInterval(function () {
