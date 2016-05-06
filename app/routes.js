@@ -83,19 +83,21 @@ module.exports = function(app, passport) {
 		if(req.query.count)
 			count = req.query.count;
 
-		Offer.find(function(err, offers){
-			if (err) {
-				res.status(500);
-				res.send(err);
-			}
-			if(count == 'true')
-				res.json({message: 'OK', data: offers.length});
-			else
-				res.json({message: 'OK', data: offers});
-		})
-		.limit(limit)
-		.sort(sort)
-		.select(select);
+		Offer.find(where)
+			.limit(limit)
+			.sort(sort)
+			.select(select)
+			.exec(function(err, offers){
+				if (err) {
+					res.status(500);
+					res.send(err);
+				}
+				if(count == 'true')
+					res.json({message: 'OK', data: offers.length});
+				else
+					res.json({message: 'OK', data: offers});
+			})
+
 	});
 
 	offersRoute.delete(function(req,res){
