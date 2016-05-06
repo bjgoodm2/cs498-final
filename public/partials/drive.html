@@ -41,12 +41,12 @@
 
   <!-- Submit forms -->
   <div class="container">
-    <form ng-submit="postOffer(user._id, user.local.name, user.local.email, asyncOriginSelected, asyncDestSelected, departureDate, departureTime, user.local.carPicUrl)">
+    <form name="offerSubmissionForm" ng-submit="postOffer(user._id, user.local.name, user.local.email, asyncOriginSelected, asyncDestSelected, departureDate, departureTime, user.local.carPicUrl)">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
             <label for="originInput">Origin</label>
-            <input type="text" id="originInput" placeholder="Origin" autocomplete="off" ng-model="asyncOriginSelected" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingOriginLocations" typeahead-no-results="noOriginResults" class="form-control">
+            <input type="text" id="originInput" placeholder="Champaign, IL" autocomplete="off" required ng-model="asyncOriginSelected" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingOriginLocations" typeahead-no-results="noOriginResults" class="form-control">
             <i ng-show="loadingOriginLocations" class="glyphicon glyphicon-refresh"></i>
             <div ng-show="noOriginResults">
               <i class="glyphicon glyphicon-remove"></i> No Results Found
@@ -54,7 +54,7 @@
           </div>
           <div class="form-group">
             <label for="destInput">Destination</label>
-            <input type="text" id="destInput" placeholder="Destination" autocomplete="off" ng-model="asyncDestSelected" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingDestLocations" typeahead-no-results="noDestResults" class="form-control">
+            <input type="text" id="destInput" placeholder="Chicago, IL" autocomplete="off" required ng-model="asyncDestSelected" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingDestLocations" typeahead-no-results="noDestResults" class="form-control">
             <i ng-show="loadingDestLocations" class="glyphicon glyphicon-refresh"></i>
             <div ng-show="noDestResults">
               <i class="glyphicon glyphicon-remove"></i> No Results Found
@@ -67,18 +67,18 @@
           <div class="form-group">
             <!-- For screen readers -->
             <label class="sr-only" for="startDateInput">Date of departure</label>
-            <input type="date" class="form-control" id="startDateInput" ng-model="departureDate" placeholder="Start date">
+            <input type="date" class="form-control" id="startDateInput" ng-model="departureDate" placeholder="Start date" required>
           </div>
 
           <label for="startDateInput">Time:</label><br>
           <div class="form-group">
             <label class="sr-only" for="timeInput">Time</label>
-            <input type="time" class="form-control" id="timeInput" ng-model="departureTime">
+            <input type="time" class="form-control" id="timeInput" ng-model="departureTime" required>
           </div>
         </div>
       </div>
       <!--button type="button" class="btn btn-primary btn-lg center-block">Submit</button-->
-      <input type="submit" class="btn btn-primary btn-lg center-block" value="Submit"/>
+      <input type="submit" ng-disabled="offerSubmissionForm.$invalid" class="btn btn-primary btn-lg center-block" value="Submit"/>
     </form>
     <br>
     <div ng-show="offerPosted" class="alert alert-success alert-dismissible" role="alert">

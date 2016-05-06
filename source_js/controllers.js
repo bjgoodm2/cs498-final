@@ -122,6 +122,10 @@ app.controller('driveController', ['$scope', '$http', function($scope, $http) {
             };
             $http.put('/api/users/' + driverId, nextReqBody).success(function(data){
                 console.log(data);
+                $scope.asyncOriginSelected = "";
+                $scope.asyncDestSelected = "";
+                $scope.departureDate = "";
+                $scope.departureTime = "";
             }).error(function(data){
                 //do something
                 console.log(data);
@@ -156,6 +160,13 @@ app.controller('profileController', ['$scope', '$http', '$location', function($s
     $scope.deleteUser = function(userId){
         console.log('delete User called');
         console.log(userId);
+        for(var i=0; i<$scope.offers.length; i++) {
+            $http.delete('/api/offers/'+$scope.offers[i]._id).success(function(res) {
+                console.log(res);
+            }).error(function(res) {
+                console.log(res);
+            })
+        }
         $http.delete('/api/users/' + userId).success(function(data){
             console.log(data);
             $location.path('/home');
