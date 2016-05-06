@@ -109,11 +109,15 @@
               <form name="nestedSignupForm" action="/signup" method="post">
                 <div class="form-group">
                   <label for="signupEmailInput">Email address<span style="color:red">*</span></label>
-                  <input type="email" class="form-control" id="signupEmailInput" name="email" placeholder="Email">
+                  <input type="email" class="form-control" id="signupEmailInput" name="email" placeholder="Email" ng-model="signup.email" required>
                 </div>
                 <div class="form-group">
                   <label for="signupNameInput">Name<span style="color:red">*</span></label>
-                  <input type="text" class="form-control" id="signupNameInput" name="name" placeholder="Name">
+                  <input type="text" class="form-control" id="signupNameInput" name="name" placeholder="Name" ng-model="signup.name" required>
+                </div>
+                <div class="form-group">
+                  <label for="signupCellInput">Cellphone number<span style="color:red">*</span></label>
+                  <input type="text" class="form-control" id="signupCellInput" name="cellphone" placeholder="(xxx)xxx-xxxx" ng-model="signup.cell" required>
                 </div>
                 <div class="form-group">
                   <label for="signupDescriptionInput">Description</label>
@@ -129,13 +133,13 @@
                 </div>
                 <div class="form-group">
                   <label for="signupPassInput1">Password<span style="color:red">*</span></label>
-                  <input type="password" class="form-control" id="signupPassInput1" name="password" placeholder="Password">
+                  <input type="password" class="form-control" id="signupPassInput1" name="password" placeholder="Password" ng-model="signup.password" required>
                 </div>
                 <div class="form-group">
                   <label for="signupPassInput2">Re-enter Password<span style="color:red">*</span></label>
                   <input type="password" class="form-control" id="signupPassInput2" placeholder="Password">
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" ng-disabled="nestedSignupForm.$invalid" class="btn btn-primary">Register</button>
               </form>
             </uib-tab>
           </uib-tabset>

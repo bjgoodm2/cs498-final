@@ -32,6 +32,11 @@ module.exports = function(passport) {
 
                             newUser.local.email = email;
                             newUser.local.name = req.param('name');
+                            if(req.param('cellphone') && req.param('cellphone') !== "") {
+                                newUser.local.cellphone = req.param('cellphone');
+                            } else {
+                                newUser.local.cellphone = "";
+                            }
                             if(req.param('description') && req.param('description') !== "") {
                                 newUser.local.description = req.param('description');
                             } else {

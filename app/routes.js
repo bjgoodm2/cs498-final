@@ -251,6 +251,7 @@ module.exports = function(app, passport) {
 				user.local.name = req.body.name;
 				user.local.email = req.body.email;
 				user.local.description = req.body.description;
+				user.local.cellphone = req.body.cellphone;
 				user.local.userPicUrl = req.body.userPicUrl;
 				user.local.carPicUrl = req.body.carPicUrl;
 				user.save(function(err) {
