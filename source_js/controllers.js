@@ -9,7 +9,7 @@ app.controller('homeController', ['$scope', '$http', function($scope, $http) {
             $('#fullpage').fullpage({
                 css3:true,
                 scrollBar:true,
-                normalScrollElements: '.modal',
+                normalScrollElements: '.modal, .not-full-page',
                 afterRender: function () {
                     //on page load, start the slideshow
                     slideTimeout = setInterval(function () {
@@ -179,12 +179,19 @@ app.controller('profileController', ['$scope', '$http', '$location', function($s
 app.controller('otherProfileController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     var userId = $routeParams.id;
     $scope.profile = false;
+
+    $http.get('/profile').success(function(data) {
+        console.log(data);
+        if(!data.error) {
+            $scope.profile = true;
+            $scope.user = data.user;
+        }
+    });
     $http.get('/api/users/'+userId).success(function(res) {
         $http.get('/api/offers?where={"driverId": "'+ res.data._id +'"}').success(function(res){
             $scope.currOffers = res.data;
         });
         if(!res.error) {
-            $scope.profile = true;
             $scope.currUser = res.data;
         }
     });
