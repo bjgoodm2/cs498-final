@@ -179,6 +179,29 @@ app.controller('profileController', ['$scope', '$http', '$location', function($s
             console.log(data);
         })
     };
+
+    $scope.deleteOffer = function(userId, offerId){
+        // Delete offer from user's offers
+        $http.get('/api/users/'+userId).success(function(data){
+             var offers = data.data.local.driveOffers;
+             var offerIdPos = offers.indexOf(offerId);
+             offers.splice(offerIdPos, 1);
+             var updatedData = {'driveOffers' : offers};
+             $http.put('/api/users/'+userId, updatedData).success(function(res) {
+                console.log(res);
+                // Now, delete offer altogether
+                $http.delete('/api/offers/'+offerId).success(function(res){
+                    console.log(res);
+                    location.reload();
+                }).error(function(res){
+                    console.log(res);
+                });
+             }).error(function(res){
+                console.log(res);
+             });
+        });
+    };
+
 }]);
 
 app.controller('otherProfileController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {

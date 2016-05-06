@@ -60,6 +60,7 @@
     <div class="well">
       <h3><span class="fa fa-user"></span> Offers</h3>
       <div ng-repeat="offer in offers" class="panel panel-default">
+        <a href="" ng-click="deleteOffer(user._id, offer._id)" class="pull-right btn btn-primary btn-danger" role="button">Remove offer</a>
         <p>{{offer.departureDate | date : 'mediumDate'}} at {{offer.departureTime | date : 'shortTime'}}</p>
         <p>You will be driving from {{offer.origin}} to {{offer.destination}}</p>
       </div>

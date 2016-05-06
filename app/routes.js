@@ -143,6 +143,7 @@ module.exports = function(app, passport) {
 			}
 
 			offer.carType = req.body.carType;
+
 			offer.save(function (err) {
 				if (err) {
 					res.status(500);
@@ -308,7 +309,10 @@ module.exports = function(app, passport) {
 				});
 			}
 			else {
-				user.local.driveOffers.push(req.body.driveOffer);
+                                if(req.body.driveOffer)
+				    user.local.driveOffers.push(req.body.driveOffer);
+                                if(req.body.driveOffers)
+                                    user.local.driveOffers = req.body.driveOffers;
 				user.save(function (err) {
 					if (err) {
 						res.status(500);

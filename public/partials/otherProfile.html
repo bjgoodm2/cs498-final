@@ -57,7 +57,7 @@
       <h3><span class="fa fa-user"></span> Offers</h3>
       <div ng-repeat="offer in currOffers" class="panel panel-default">
         <p>{{offer.departureDate | date : 'mediumDate'}} at {{offer.departureTime | date : 'shortTime'}}</p>
-        <p>You will be driving from {{offer.origin}} to {{offer.destination}}</p>
+        <p>{{currUser.local.name}} will be driving from {{offer.origin}} to {{offer.destination}}</p>
       </div>
     </div>
   </div>
