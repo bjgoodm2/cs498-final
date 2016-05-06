@@ -50,11 +50,9 @@
       <p>
         <strong>Name</strong>: {{user.local.name}}<br>
         <strong>Email</strong>: {{user.local.email}}<br>
-        <strong>Profile Pic URL</strong>: {{user.local.userPicUrl}}<br>
-        <strong>Car Pic URL</strong>: {{user.local.carPicUrl}}
       </p>
       <div>
-      <a href="" data-toggle="modal" data-target="#loginModal" class="btn btn-primary btn-lg" role="button">Edit</a>
+      <a href="" data-toggle="modal" data-target="#editModal" class="btn btn-primary btn-lg" role="button">Edit</a>
       <a href="" ng-click="deleteUser(user._id)" class="pull-right btn btn-primary btn-lg btn-danger" role="button">I hate your app, delete my user pls</a>
       </div>
     </div>
@@ -67,7 +65,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -75,26 +73,26 @@
           <h4 class="modal-title">Edit User</h4>
         </div>
         <div class="modal-body">
-              <form name="editUserForm" action="{{'/api/users/' + user._id }}" method="post">
+              <form name="editUserForm" ng-submit="editProfile()">
                 <div class="form-group">
                   <label for="loginEmailInput">Email<span style="color:red">*</span></label>
-                  <input type="email" class="form-control" id="loginEmailInput" name="email" value="{{user.local.email}}">
+                  <input type="email" class="form-control" id="loginEmailInput" name="email" ng-model="user.local.email">
                 </div>
                 <div class="form-group">
                   <label for="loginNameInput">Name<span style="color:red">*</span></label>
-                  <input type="text" class="form-control" id="loginNameInput" name="name" value="{{user.local.name}}">
+                  <input type="text" class="form-control" id="loginNameInput" name="name" ng-model="user.local.name">
                 </div>
                 <div class="form-group">
                   <label for="loginDescriptionInput">Description</label>
-                  <textarea class="form-control" id="loginDescriptionInput" name="description">{{user.local.description}}</textarea>
+                  <textarea class="form-control" id="loginDescriptionInput" name="description" ng-model="user.local.description"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="loginUserPicUrlInput">User Picture Url</label>
-                  <input type="text" class="form-control" id="loginUserPicUrlInput" name="userPicUrl" value="{{user.local.userPicUrl}}">
+                  <input type="text" class="form-control" id="loginUserPicUrlInput" name="userPicUrl" ng-model="user.local.userPicUrl">
                 </div>
                 <div class="form-group">
                   <label for="loginCarPicUrlInput">Car Picture Url</label>
-                  <input type="text" class="form-control" id="loginCarPicUrlInput" name="carPicUrl" value="{{user.local.carPicUrl}}">
+                  <input type="text" class="form-control" id="loginCarPicUrlInput" name="carPicUrl" ng-model="user.local.carPicUrl">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit Changes</button>
               </form>

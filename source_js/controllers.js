@@ -37,17 +37,14 @@ app.controller('findController', ['$scope', '$http', function($scope, $http) {
             $scope.user = data.user;
         }
     });
-    $http.get('/api/offers').success(function(res) {
-        console.log(res.data);
-        $scope.offers = res.data;
-    });
+
     $scope.getLocation = function(val) {
         return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
             params: {
                 address: val,
                 sensor: false,
                 types: ['(cities)'],
-                componentRestrictions: {country: "us"}
+                components: 'country:US'
             }
         }).then(function(response){
             return response.data.results.map(function(item){
@@ -67,7 +64,7 @@ app.controller('findController', ['$scope', '$http', function($scope, $http) {
 
                 $http.get('/api/offers?where={'+
                         'departureDate: {$gte: new Date("'+ $scope.search.startDate.toISOString()+'"), $lt: new Date("'+$scope.search.endDate.toISOString()+'")},'+
-                        'origin: "'+$scope.search.asyncOriginSelected+'"}')
+                        'origin: "'+$scope.search.asyncOriginSelected+'", destination: { $ne: "'+$scope.search.asyncDestSelected+'"}}')
                     .success(function(res) {
                         console.log(res);
                         $scope.offers.push.apply($scope.offers, res.data);
@@ -142,6 +139,14 @@ app.controller('profileController', ['$scope', '$http', '$location', function($s
             $scope.user = data.user;
         }
     });
+
+    $scope.editProfile = function() {
+        $http.post('/api/users/'+$scope.user._id, $scope.user.local).success(function(res) {
+            console.log(res);
+            $('#editModal').modal('hide')
+        })
+    };
+
     $scope.deleteUser = function(userId){
         console.log('delete User called');
         console.log(userId);
