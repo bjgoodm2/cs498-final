@@ -53,7 +53,10 @@
 	}
 }
 
-
+//=======Find ride box======
+img.img-rounded.profile-thumb {
+	margin-right: 10px;
+}
 
 //=======Nav bar============
 .navbar-brand {
@@ -93,16 +96,12 @@
 	margin-right: 20px;
 }
 
-//=======All Sections=======
-#section0, #section1, #section2, #section3{
-	background-size: cover;
-}
-
 //=======Section1===========
 #section1 {
 	width:100%;
 	display:block;
 	position:relative;
+	background-size: cover;
 	background-image: url(../data/pics/background-road.jpg);
 	padding: 30% 0 0 0;
 }

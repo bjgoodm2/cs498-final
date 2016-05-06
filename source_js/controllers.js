@@ -38,23 +38,16 @@ app.controller('findController', ['$scope', '$http', function($scope, $http) {
         }
     });
     $http.get('/api/offers').success(function(res) {
-        console.log(res);
+        console.log(res.data);
         $scope.offers = res.data;
-        /*for(var i=0; i<$scope.offers.length; i++) {
-            console.log($scope.offers[i]);
-            var offer_uid = $scope.offers[i].driverId;
-            $http.get('/api/users/'+offer_uid).success((function(idx) {
-                return function(res) {
-                    $scope.offers[idx].driverPicUrl = res.data.local.userPicUrl;
-                }
-            })(i));
-        }*/
     });
     $scope.getLocation = function(val) {
         return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
             params: {
                 address: val,
-                sensor: false
+                sensor: false,
+                types: ['(cities)'],
+                componentRestrictions: {country: "us"}
             }
         }).then(function(response){
             return response.data.results.map(function(item){
@@ -62,6 +55,26 @@ app.controller('findController', ['$scope', '$http', function($scope, $http) {
             });
         });
     };
+
+    $scope.searchOffers = function() {
+        $scope.offers = [];
+        $http.get('/api/offers?where={'+
+                'departureDate: {$gte: new Date("'+ $scope.search.startDate.toISOString()+'"), $lt: new Date("'+$scope.search.endDate.toISOString()+'")},'+
+                'origin: "'+$scope.search.asyncOriginSelected+'", destination: "'+$scope.search.asyncDestSelected+'"}')
+            .success(function(res) {
+                console.log(res);
+                $scope.offers.push.apply($scope.offers, res.data);
+
+                $http.get('/api/offers?where={'+
+                        'departureDate: {$gte: new Date("'+ $scope.search.startDate.toISOString()+'"), $lt: new Date("'+$scope.search.endDate.toISOString()+'")},'+
+                        'origin: "'+$scope.search.asyncOriginSelected+'"}')
+                    .success(function(res) {
+                        console.log(res);
+                        $scope.offers.push.apply($scope.offers, res.data);
+                        console.log($scope.offers)
+                    });
+            });
+    }
 }]);
 
 app.controller('driveController', ['$scope', '$http', function($scope, $http) {

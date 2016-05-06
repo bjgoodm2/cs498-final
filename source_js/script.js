@@ -2,6 +2,7 @@ $(document).ready(function() {
     $('#fullpage').fullpage({
         css3:true,
         scrollBar:true,
+        normalScrollElements: '.modal',
         afterRender: function () {
             //on page load, start the slideshow
             slideTimeout = setInterval(function () {
@@ -10,7 +11,7 @@ $(document).ready(function() {
         }
 
     }); // end fullpage
-    $.fn.fullpage.destroy('all');
+    //$.fn.fullpage.destroy('all');
     $(".scrollTop").click(function() {
         $("html, body").animate({ scrollTop: 0 }, "slow");
         return false;
