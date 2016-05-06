@@ -1,5 +1,9 @@
 .not-full-page { padding-top: 110px; }
 
+body {
+	background-image: url("./../data/pics/texture.png");
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -84,8 +88,16 @@ img.img-rounded.profile-thumb {
     background-color:transparent !important;
 }
 
+.nav-Other a{
+	color:black !important;
+}
+
 .navbar-nav a:hover:not(.active) {
     border-bottom: 2px solid white;
+}
+
+.nav-Other a:hover:not(.active) {
+    border-bottom: 2px solid black !important;
 }
 
 .navbar-nav a.active {
@@ -144,3 +156,21 @@ img.img-rounded.profile-thumb {
 }
 
 //=====Section3============
+
+//======Find view=========
+.navbar-custom {
+	background-color: rgba(255,255,255,0.8) !important;
+}
+
+.panel {
+	background-color: rgba(255,255,255,0.3);
+}
+
+.panel-body p{
+	font-size:1.3em;
+}
+
+//=======Other============
+.setFont {
+	font-family:$font-stack;
+}
