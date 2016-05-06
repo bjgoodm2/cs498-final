@@ -1,0 +1,89 @@
+<div class="not-full-page" ng-controller="driveController">
+  <!-- Nav bar -->
+  <nav class="navbar navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/home">
+        <img src="./data/pics/carpool_icon_small.png" style="width: 150px; height:70px">
+        </a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav nav-Other navbar-nav">
+          <li><a href="#/home">Home</a></li>
+          <li><a href="#/find">Find</a></li>
+          <li class="active"><a href="#/drive">Drive</a></li>
+        </ul>
+        <ul class="nav nav-Other navbar-nav navbar-right">
+          <li ng-hide="profile">
+            <a href="#/home">Not Logged In</a>
+          </li>
+          <li ng-show="profile" class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.local.name}}<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#/profile">Profile</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div><p class="lead">I want to volunteer to drive!</p></div>
+  </div>
+
+  <!-- Submit forms -->
+  <div class="container">
+    <form ng-submit="postOffer(user._id, user.local.name, user.local.email, asyncOriginSelected, asyncDestSelected, departureDate, departureTime, user.local.carPicUrl)">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="originInput">Origin</label>
+            <input type="text" id="originInput" placeholder="Origin" autocomplete="off" ng-model="asyncOriginSelected" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingOriginLocations" typeahead-no-results="noOriginResults" class="form-control">
+            <i ng-show="loadingOriginLocations" class="glyphicon glyphicon-refresh"></i>
+            <div ng-show="noOriginResults">
+              <i class="glyphicon glyphicon-remove"></i> No Results Found
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="destInput">Destination</label>
+            <input type="text" id="destInput" placeholder="Destination" autocomplete="off" ng-model="asyncDestSelected" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingDestLocations" typeahead-no-results="noDestResults" class="form-control">
+            <i ng-show="loadingDestLocations" class="glyphicon glyphicon-refresh"></i>
+            <div ng-show="noDestResults">
+              <i class="glyphicon glyphicon-remove"></i> No Results Found
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+
+          <label for="startDateInput">Date of departure:</label><br>
+          <div class="form-group">
+            <!-- For screen readers -->
+            <label class="sr-only" for="startDateInput">Date of departure</label>
+            <input type="date" class="form-control" id="startDateInput" ng-model="departureDate" placeholder="Start date">
+          </div>
+
+          <label for="startDateInput">Time:</label><br>
+          <div class="form-group">
+            <label class="sr-only" for="timeInput">Time</label>
+            <input type="time" class="form-control" id="timeInput" ng-model="departureTime">
+          </div>
+        </div>
+      </div>
+      <!--button type="button" class="btn btn-primary btn-lg center-block">Submit</button-->
+      <input type="submit" class="btn btn-primary btn-lg center-block" value="Submit"/>
+    </form>
+    <br>
+    <div ng-show="offerPosted" class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Offer Posted!</strong> You are leaving for {{retVals.destination}} from {{retVals.origin}} at {{retVals.departureTime | date : 'shortTime'}}
+    </div>
+  </div>
+</div>

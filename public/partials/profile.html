@@ -1,0 +1,103 @@
+<div class="not-full-page" ng-controller="profileController">
+  <nav class="navbar navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/home">
+        <img src="./data/pics/carpool_icon_small.png" style="width: 150px; height:70px">
+        </a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav nav-Other navbar-nav">
+          <li><a href="#/home">Home</a></li>
+          <li><a href="#/find">Find</a></li>
+          <li><a href="#/drive">Drive</a></li>
+        </ul>
+        <ul class="nav nav-Other navbar-nav navbar-right">
+          <li ng-hide="profile">
+            <a href="#/home">Not Logged In</a>
+          </li>
+          <li ng-show="profile" class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.local.name}}<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#/profile">Profile</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div ng-show="profile" class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-2">
+        <img ng-src="{{user.local.userPicUrl}}" alt="profile" class="img-rounded profile-photo" height="100px">
+        <img ng-src="{{user.local.carPicUrl}}" alt="car" class="img-rounded car-thumb" height="100px">
+      </div>
+      <div class="col-xs-12 col-sm-10">
+        <h2 class="setFont">Say something about yourself :</h2>
+        <p class="lead">{{user.local.description}}</p>
+      </div>
+    </div>
+    <div class="well">
+      <h3><span class="fa fa-user"></span> Profile</h3>
+      <p>
+        <strong>Name</strong>: {{user.local.name}}<br>
+        <strong>Email</strong>: {{user.local.email}}<br>
+      </p>
+      <div>
+      <a href="" data-toggle="modal" data-target="#editModal" class="btn btn-primary btn-lg" role="button">Edit</a>
+      <a href="" ng-click="deleteUser(user._id)" class="pull-right btn btn-primary btn-lg btn-danger" role="button">I hate your app, delete my user pls</a>
+      </div>
+    </div>
+    <div class="well">
+      <h3><span class="fa fa-user"></span> Offers</h3>
+      <div ng-repeat="offer in offers" class="panel panel-default">
+        <p>{{offer.departureDate | date : 'mediumDate'}} at {{offer.departureTime | date : 'shortTime'}}</p>
+        <p>You will be driving from {{offer.origin}} to {{offer.destination}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Edit User</h4>
+        </div>
+        <div class="modal-body">
+              <form name="editUserForm" ng-submit="editProfile()">
+                <div class="form-group">
+                  <label for="loginEmailInput">Email<span style="color:red">*</span></label>
+                  <input type="email" class="form-control" id="loginEmailInput" name="email" ng-model="user.local.email">
+                </div>
+                <div class="form-group">
+                  <label for="loginNameInput">Name<span style="color:red">*</span></label>
+                  <input type="text" class="form-control" id="loginNameInput" name="name" ng-model="user.local.name">
+                </div>
+                <div class="form-group">
+                  <label for="loginDescriptionInput">Description</label>
+                  <textarea class="form-control" id="loginDescriptionInput" name="description" ng-model="user.local.description"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="loginUserPicUrlInput">User Picture Url</label>
+                  <input type="text" class="form-control" id="loginUserPicUrlInput" name="userPicUrl" ng-model="user.local.userPicUrl">
+                </div>
+                <div class="form-group">
+                  <label for="loginCarPicUrlInput">Car Picture Url</label>
+                  <input type="text" class="form-control" id="loginCarPicUrlInput" name="carPicUrl" ng-model="user.local.carPicUrl">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Changes</button>
+              </form>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>

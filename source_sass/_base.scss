@@ -1,0 +1,179 @@
+.not-full-page { 
+	padding-top: 110px;
+	
+}
+
+body {
+	background-image: url("./../data/pics/texture.png");
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.profile-thumb { float: left; }
+
+.profile-photo {
+  display: block;
+}
+
+.navbar-header {
+	background-color: transparent;
+}
+
+.icon-bar {
+    background-color: white;
+}
+
+.section {
+	text-align:center;
+	//overflow:hidden;
+}
+
+@media (max-width: 767px) {
+	.heading {
+	font-family: $font-stack;
+	font-size:400%;	
+	}
+
+	.background-image {
+	height:100%;
+	z-index:30;
+	}
+}
+
+@media(min-width: 767px){
+	.heading {
+	font-family: $font-stack;
+	font-size:1000%;	
+	}
+
+	.lead {
+	font-family: $font-stack;
+	font-size:200%;
+	}
+
+	.background-image {
+	height:100%;
+	width:100%;
+	z-index:30;
+	}
+}
+
+//=======Find ride box======
+img.img-rounded.profile-thumb {
+	margin-right: 10px;
+}
+
+//=======Nav bar============
+.navbar-brand {
+	margin-left: 10px;
+	margin-right:20px;
+	transform:translate(0, -50%);
+}
+
+.navbar {
+	padding: 20px 0;
+	font-family: $font-stack;
+}
+
+.navbar-default {
+
+}
+
+.navbar-nav a{
+	display: block;
+    color: white;
+	font-size: 1.5em;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color:transparent !important;
+}
+
+.nav-Other a{
+	color:black !important;
+}
+
+.navbar-nav a:hover:not(.active) {
+    border-bottom: 2px solid white;
+}
+
+.nav-Other a:hover:not(.active) {
+    border-bottom: 2px solid black !important;
+}
+
+.navbar-nav a.active {
+    border-bottom: 2px solid white;
+}
+
+.navbar-default .navbar-nav>li>a:hover:not(.active) {
+	border-bottom: 2px solid #777;
+}
+
+.navbar-default .navbar-nav>li>a.active {
+	border-bottom: 2px solid #777;
+}
+
+.login {
+	margin-right: 20px;
+}
+
+//=======Section1===========
+#section1 {
+	width:100%;
+	display:block;
+	position:relative;
+	background-size: cover;
+	background-image: url(../data/pics/background-road.jpg);
+	padding: 30% 0 0 0;
+}
+
+
+
+.above-image {
+	color:white;
+	position:absolute;
+	z-index:50;
+	left: 50%;
+	top:50%;
+	transform:translate(-50%, -50%);
+}
+
+.right {
+	color: white;
+}
+
+//=======Section2===========
+.slide {
+	position:relative;
+}
+
+.above-image2 {
+	color:white;
+	position:absolute;
+	z-index:50;
+	left: 50%;
+	top:50%;
+	transform:translate(-50%, -50%);
+}
+
+//=====Section3============
+
+//======Find view=========
+.navbar-custom {
+	background-color: rgba(255,255,255,0.8) !important;
+}
+
+.panel {
+	background-color: rgba(255,255,255,0.3);
+}
+
+.panel-body p{
+	font-size:1.3em;
+}
+
+//=======Other============
+.setFont {
+	font-family:$font-stack;
+}
