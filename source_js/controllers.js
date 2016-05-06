@@ -154,7 +154,12 @@ app.controller('profileController', ['$scope', '$http', '$location', function($s
         $http.post('/api/users/'+$scope.user._id, $scope.user.local).success(function(res) {
             console.log(res);
             $('#editModal').modal('hide')
-        })
+        });
+        for(var i=0; i<$scope.offers.length; i++) {
+            $http.put('/api/offers/'+$scope.offers[i]._id, {carType: $scope.user.local.carPicUrl}).success(function(res) {
+                console.log(res)
+            })
+        }
     };
 
     $scope.deleteUser = function(userId){
